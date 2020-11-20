@@ -32,6 +32,7 @@ PostModel.plugin(mongooseIdValidator);
 
 PostModel.pre("deleteMany", async () => {
   const data = await mongoose.model("Post").find();
+  await mongoose.model("Comment").deleteMany();
 
   for (item of data) {
     item.image &&

@@ -7,6 +7,7 @@ const app = express();
 
 const userRouter = require("./routers/userRouter");
 const postRouter = require("./routers/postRouter");
+const commentRouter = require("./routers/commentRouter");
 
 const run = async () => {
   try {
@@ -28,6 +29,7 @@ const run = async () => {
 
   app.use("/users", userRouter);
   app.use("/posts", postRouter);
+  app.use("/comments", commentRouter);
 
   app.listen(config.port, () => {
     console.log(`Server started on ${config.port} port.`);
