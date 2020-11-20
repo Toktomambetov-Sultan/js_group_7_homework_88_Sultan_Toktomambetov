@@ -9,7 +9,7 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { logOut } from "../../store/user/userActions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -72,8 +72,13 @@ const Layout = ({ children }) => {
         <Toolbar>
           <Container>
             <Grid container justify="space-between" alignItems="center">
-              <Typography variant="h4">Forum</Typography>
-              <div>{state.user ? isToken : isNotToken}</div>
+              <NavLink to="/posts" className={classes.link} exact>
+                <Typography variant="h4">Forum</Typography>
+              </NavLink>
+              {state.user?.token && (
+                <Typography variant="h6">Hello, {state.user.username}!</Typography>
+              )}
+              <div>{state.user?.token ? isToken : isNotToken}</div>
             </Grid>
           </Container>
         </Toolbar>

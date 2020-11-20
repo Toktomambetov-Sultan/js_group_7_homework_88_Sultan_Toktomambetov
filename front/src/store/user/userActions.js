@@ -48,7 +48,7 @@ export const registration = (data) => {
       const response = await axiosOrder.post("/users", data);
       dispatch(setUserData(response.data));
       dispatch(fetchSuccess());
-      dispatch(push("/music"));
+      dispatch(push("/"));
     } catch (error) {
       dispatch(fetchRegistrationError(error.response.data));
     }
@@ -62,7 +62,7 @@ export const authorization = (data) => {
       const response = await axiosOrder.post("/users/sessions", data);
       dispatch(setUserData(response.data));
       dispatch(fetchSuccess());
-      dispatch(push("/music"));
+      dispatch(push("/"));
     } catch (error) {
       dispatch(fetchAuthorizationError(error.response?.data));
     }

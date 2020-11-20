@@ -28,7 +28,7 @@ router.post(
     try {
       if (!(file || req.body.description)) {
         return res.status(400).send({
-          error: {
+          errors: {
             image: {
               message: "Please set in at least image field.",
             },

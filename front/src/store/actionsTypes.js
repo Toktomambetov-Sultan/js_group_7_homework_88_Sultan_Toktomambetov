@@ -2,6 +2,9 @@ export const FETCH_REQUEST = "FETCH_REQUEST";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_ERROR = "FETCH_ERROR";
 
+export const SET_POST_DATA = "SET_POST_DATA";
+
+// ----Users states---- //
 
 export const FETCH_U_REQUEST = "FETCH_U_REQUEST";
 export const FETCH_U_SUCCESS = "FETCH_U_SUCCESS";

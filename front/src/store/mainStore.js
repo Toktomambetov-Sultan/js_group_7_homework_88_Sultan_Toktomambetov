@@ -1,4 +1,6 @@
 import userReducer from "./user/userReducer";
+import mainReducer from "./main/mainReducer";
+
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
@@ -9,6 +11,7 @@ export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   user: userReducer,
+  main: mainReducer,
   router: connectRouter(history),
 });
 
