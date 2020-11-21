@@ -6,7 +6,8 @@ const config = require("./../config");
 
 router.get("/", async (req, res) => {
   try {
-    const comments = await schema.Comment.find()
+    const comments = await schema.Comment.find(req.query)
+      .populate({ path: "user" })
       .populate({
         path: "post",
         populate: {

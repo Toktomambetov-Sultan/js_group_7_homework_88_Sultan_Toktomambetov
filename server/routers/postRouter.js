@@ -8,7 +8,7 @@ const config = require("./../config");
 
 router.get("/", async (req, res) => {
   try {
-    const posts = await schema.Post.find()
+    const posts = await schema.Post.find(req.query)
       .populate({
         path: "user",
       })
@@ -44,7 +44,6 @@ router.post(
       });
       post.image = file && file.filename;
       post.user = req.user._id;
-      console.log(post);
       await post.save();
 
       return res.send(post);

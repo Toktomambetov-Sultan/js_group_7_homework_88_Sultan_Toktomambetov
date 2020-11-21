@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import FileUploader from "./../UI/FileUploader/FileUploader";
+import FileUploader from "../UI/FileUploader/FileUploader";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FormPost = ({ onSubmit, onChange, error }) => {
+const PostForm = ({ onSubmit, onChange, error, post }) => {
   const classes = useStyles();
   console.log(error);
   return (
@@ -35,6 +35,7 @@ const FormPost = ({ onSubmit, onChange, error }) => {
             label={error?.title?.message || "Title"}
             name="title"
             autoFocus
+            value={post.title}
             onChange={onChange}
           />
           <TextField
@@ -45,6 +46,7 @@ const FormPost = ({ onSubmit, onChange, error }) => {
             fullWidth
             multiline
             rows={7}
+            value={post.description}
             onChange={onChange}
             name="description"
           />
@@ -67,4 +69,4 @@ const FormPost = ({ onSubmit, onChange, error }) => {
   );
 };
 
-export default FormPost;
+export default PostForm;

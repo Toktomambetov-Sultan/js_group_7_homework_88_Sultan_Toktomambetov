@@ -72,7 +72,7 @@ const Layout = ({ children }) => {
         <Toolbar>
           <Container>
             <Grid container justify="space-between" alignItems="center">
-              <NavLink to="/posts" className={classes.link} exact>
+              <NavLink to="/posts" className={classes.link}>
                 <Typography variant="h4">Forum</Typography>
               </NavLink>
               {state.user?.token && (

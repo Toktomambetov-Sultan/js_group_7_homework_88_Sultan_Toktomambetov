@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import FormPost from "../../components/FormPost/FormPost";
+import PostForm from "../../components/PostForm/PostForm";
 import { postPostData } from "../../store/post/postActions";
 
 const AddPostPage = () => {
@@ -11,6 +11,8 @@ const AddPostPage = () => {
   });
   const dispatch = useDispatch();
   const state = useSelector((state) => state.main);
+  const userState = useSelector((state) => state.user);
+
   const postPostDataHandler = (data) => dispatch(postPostData(data));
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -36,12 +38,14 @@ const AddPostPage = () => {
     }));
   };
   return (
-    <FormPost
-      onChange={onFormChange}
-      post={currentPost}
-      error={state.error?.errors}
-      onSubmit={onFormSubmit}
-    />
+    userState.user && (
+      <PostForm
+        onChange={onFormChange}
+        post={currentPost}
+        error={state.error?.errors}
+        onSubmit={onFormSubmit}
+      />
+    )
   );
 };
 

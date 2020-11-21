@@ -3,6 +3,8 @@ export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_ERROR = "FETCH_ERROR";
 
 export const SET_POST_DATA = "SET_POST_DATA";
+export const SET_COMMENT_DATA = "SET_COMMENT_DATA";
+export const SET_CURRENT_POST = "SET_CURRENT_POST";
 
 // ----Users states---- //
 

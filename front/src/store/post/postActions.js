@@ -1,6 +1,7 @@
 import { SET_POST_DATA } from "../actionsTypes";
 import { fetchRequest, fetchSuccess, fetchError } from "./../main/mainActions";
 import axiosOrder from "./../../axiosOrder";
+import { push } from "connected-react-router";
 
 const setData = (data) => {
   return {
@@ -9,11 +10,11 @@ const setData = (data) => {
   };
 };
 
-export const getPostData = () => {
+export const getPostData = (query = "") => {
   return async (dispatch) => {
-    dispatch(fetchRequest);
+    dispatch(fetchRequest());
     try {
-      const response = await axiosOrder.get("/posts");
+      const response = await axiosOrder.get("/posts" + query);
       dispatch(setData(response.data));
       dispatch(fetchSuccess());
     } catch (error) {
@@ -24,13 +25,13 @@ export const getPostData = () => {
 
 export const postPostData = (data) => {
   return async (dispatch, getState) => {
-    dispatch(fetchRequest);
+    dispatch(fetchRequest());
     try {
       const headers = {
         Authorization: getState().user.user?.token,
       };
-      const response = await axiosOrder.post("/posts", data, { headers });
-      dispatch(setData(response.data));
+      await axiosOrder.post("/posts", data, { headers });
+      dispatch(push("/"));
       dispatch(fetchSuccess());
     } catch (error) {
       dispatch(fetchError(error.response?.data));
